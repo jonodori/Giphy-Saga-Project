@@ -2,15 +2,35 @@
 function FavoritesList() {
 
 
+    function sendToServer (event){
+        event.preventDefault();
+        console.log('In send Server');
+    }
     return (
 
         <div>
             <h3>Favorites</h3>
+            {/* V Map images here V */}
+            <form onSubmit={sendToServer}>
+                <ul>
+                    <li> FAVORITE GIFS HERE!!!???!! </li>
+                    <select>
+                        <option value="FUNNEY"> FUNNY
+                        </option>
+                        <option value="COHORT"> COHORT
+                        </option>
+                        <option value="CARTOON"> CARTOON
+                        </option>
+                        <option value="NSFW"> NSFW
+                        </option>
+                        <option value="MEME"> MEME
+                        </option>
+                    </select>
+                </ul>
 
-            <ul>
-                <li> </li>
-            </ul>
-        <button onClick={filterFavorites}> </button>
+                <h2>SAVE IMAGE</h2>
+                <button>Save Gif</button>
+            </form>
         </div>
     );
 }
