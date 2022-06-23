@@ -1,29 +1,30 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
-
+import { useHistory } from 'react-router-dom'
 
 function HomePage(){
     const dispatch = useDispatch();
-
+    const history = useHistory()
     // useEffect(() => {
         //where you use your get reducer
 
     // } [],)
-
 
     const getImage = () => {
         dispatch({
             type: 'ADD_IMAGE'
         })
     }
-
+const sendToFavorites = () => {
+    history.push('/favorites')
+}
 
     return(
         <>
             <div>
                 <h1>Giphy Search!</h1>
                 <div>
-                    <button> View Favorites</button>
+                    <button onClick={sendToFavorites}> View Favorites</button>
                 </div>
             </div> 
                 <div>

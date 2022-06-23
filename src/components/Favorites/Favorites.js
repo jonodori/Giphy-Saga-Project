@@ -9,7 +9,7 @@ function FavoritesList() {
     return (
 
         <div>
-            <h3>Favorites</h3>
+            <h1>Favorites</h1>
             {/* V Map images here V */}
             <form onSubmit={sendToServer}>
                 <ul>
