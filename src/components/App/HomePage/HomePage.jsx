@@ -1,7 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector} from 'react-redux';
+
 
 function HomePage(){
+    const dispatch = useDispatch();
 
+    // useEffect(() => {
+        //where you use your get reducer
+
+    // } [],)
+
+
+    const getImage = () => {
+        dispatch({
+            type: 'ADD_IMAGE'
+        })
+    }
 
 
     return(
@@ -14,7 +28,7 @@ function HomePage(){
             </div> 
                 <div>
                     <input type='text' placeholder='Enter name'/>
-                    <span><button>search</button></span>
+                    <span><button onClick={getImage}>search</button></span>
                 </div>
                 <section>
                     <h2> Here are your Images!</h2>

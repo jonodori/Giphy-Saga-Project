@@ -27,6 +27,7 @@ const store = createStore(
     combineReducers({ 
     addImage,
     }),
+
     applyMiddleware(sagaMiddleware, logger)
   );
 
