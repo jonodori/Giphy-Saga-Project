@@ -16,9 +16,9 @@ function* watcherSaga(){
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
-    combineReducers({ 
+    // combineReducers({ 
     
-    }),
+    // }),
     applyMiddleware(sagaMiddleware, logger)
   );
 
