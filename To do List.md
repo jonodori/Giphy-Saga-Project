@@ -2,7 +2,7 @@
  [] Search View ( will need to make this a componet)
     [] Allow a user to enter a search request and submit that request
         [] Need an input feild for this
-        [] Potentionallly a form as well
+        <!-- [] Potentionallly a form as well -->
     []  Display the results on the Dom 
     []  Allow a user to favorite an of the resulting images
         [] Will need some sort of button to click and display a favorite
