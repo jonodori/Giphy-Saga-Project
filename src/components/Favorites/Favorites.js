@@ -10,7 +10,7 @@ function FavoritesList() {
             <ul>
                 <li> </li>
             </ul>
-
+        <button onClick={filterFavorites}> </button>
         </div>
     );
 }
