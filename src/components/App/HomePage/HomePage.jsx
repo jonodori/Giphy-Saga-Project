@@ -1,8 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom'
 
+
+
+
 function HomePage(){
+    const [picture, setPicture] = useState([]);
     const dispatch = useDispatch();
     const history = useHistory()
     // useEffect(() => {
@@ -10,13 +14,16 @@ function HomePage(){
 
     // } [],)
 
-    const getImage = () => {
+const getImage = () => {
         dispatch({
             type: 'ADD_IMAGE'
         })
     }
 const sendToFavorites = () => {
     history.push('/favorites')
+}
+const saveImageToReduxStore = () => {
+    console.log(' Inside saveImageToReduxStore');
 }
 
     return(
@@ -34,8 +41,10 @@ const sendToFavorites = () => {
                 <section>
                     <h2> Here are your Images!</h2>
                     <div>
+                    
                         Images go here
                     </div>
+                    <button onClick={saveImageToReduxStore}>Add to favorites</button>
                 </section>
         </>
     )
