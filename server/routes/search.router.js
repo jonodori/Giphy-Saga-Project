@@ -11,7 +11,7 @@ axios({
     url: 'https://api.giphy.com/v1/gifs/search',
     params: {
         api_key: process.env.GIPHY_API_KEY,
-        q: ,
+        q: 
         limit: 5
     }
 })

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 
-const axios = require('axios');
-import {useState} from 'react';
+
 
 
 
@@ -18,25 +17,18 @@ function HomePage(){
     const [picture, setPicture] = useState([]);
     const dispatch = useDispatch();
     const history = useHistory()
-    
-    
     let [search, setSearch] = useState('');
   
-    
-
-
-    useEffect(() => {
-       fetchGif
-
+    // useEffect(() => {
+    //     fetchGif();
+    //   },[])
 
 
     const fetchGif = () => {
-
         dispatch({
             type: 'FETCH_GIF',
             payload: search
-           }) 
-           
+           })   
     }
 
      
