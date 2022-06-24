@@ -10,10 +10,10 @@ function HomePage(){
 
     let [search, setSearch] = useState('');
 
-    useEffect(() => {
-       fetchGif
+    // useEffect(() => {
+    //    fetchGif
 
-    }, [])
+    // }, [])
 
     const fetchGif = () => {
         dispatch({
@@ -41,7 +41,7 @@ function HomePage(){
                 </div>
             </div> 
                 <div>
-                    <input type='text' placeholder='Enter name' 
+                    <input type='text' placeholder='Enter name' value={search}
                     onChange={(event) => {setSearch(event.target.value)} }/>
                     <span><button onClick={fetchGif}>search</button></span>
                 </div>
