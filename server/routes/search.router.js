@@ -4,22 +4,26 @@ const axios = require('axios');
 require('dotenv').config();
 
 
-router.get('/:id', (req, res) => {
 
-        const { id } = req.params
-
+router.get('/:searchBox', (req, res) => {
+    console.log(req.params.searchBox)
+    let tacos = req.params.searchBox
 axios({
     method: "GET",
-    url: `https://api.giphy.com/v1/gifs/search?api_key=q2J6sw2q0IixIXUTCUR3v1dQGuGAfipl&q=${id}&limit=10&offset=0&rating=g&lang=en`,
-    
-        
+    url: 'https://api.giphy.com/v1/gifs/search',
+    params: {
+        api_key: process.env.GIPHY_API_KEY,
+        q: tacos,
+        limit: 5
+    }
+
 })
     .then(response => {
-        console.log(response);
+        // console.log(response);
         res.send(response.data);
     })
     .catch(err => {
-        console.error('No gifs for you', err);
+        // console.error('No gifs for you', err);
         res.sendStatus(500);
     });
 

@@ -28,7 +28,7 @@ const gifs = (state = [], action) => {
 
 function* fetchGifs(action){
 console.log('made it to fetchGifs', action)
-const res = yield axios.get('/api/search', action)
+const res = yield axios.get(`/api/search/${action.payload}`)
     // console.log(action.payload);
     // console.log(res.data);
  yield put({   
