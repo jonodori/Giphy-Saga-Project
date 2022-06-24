@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
+
+const axios = require('axios');
+import {useState} from 'react';
+
+
+
+
+
+
 import { useHistory } from 'react-router-dom'
 
 
@@ -9,22 +18,44 @@ function HomePage(){
     const [picture, setPicture] = useState([]);
     const dispatch = useDispatch();
     const history = useHistory()
-    // useEffect(() => {
-        //where you use your get reducer
+    
+    
+    let [search, setSearch] = useState('');
+  
+    
 
-    // } [],)
 
-const getImage = () => {
+    useEffect(() => {
+       fetchGif
+
+
+
+    const fetchGif = () => {
+
         dispatch({
-            type: 'ADD_IMAGE'
-        })
+            type: 'FETCH_GIF',
+            payload: search
+           }) 
+           
     }
+
+     
+
+    // const getImage = () => {
+    //     dispatch({
+    //         type: 'ADD_IMAGE'
+    //     })
+    // }
+
+    
+
 const sendToFavorites = () => {
     history.push('/favorites')
 }
 const saveImageToReduxStore = () => {
     console.log(' Inside saveImageToReduxStore');
 }
+
 
     return(
         <>
@@ -35,8 +66,9 @@ const saveImageToReduxStore = () => {
                 </div>
             </div> 
                 <div>
-                    <input type='text' placeholder='Enter name'/>
-                    <span><button onClick={getImage}>search</button></span>
+                    <input type='text' placeholder='Enter name' 
+                    onChange={(event) => {setSearch(event.target.value)} }/>
+                    <span><button onClick={fetchGif}>search</button></span>
                 </div>
                 <section>
                     <h2> Here are your Images!</h2>
