@@ -32,8 +32,8 @@ const res = yield axios.get(`/api/search/${action.payload}`)
     // console.log(action.payload);
     // console.log(res.data);
  yield put({   
-    type: 'FETCH_GIF',
-    payload: res.data
+    type: 'SET_GIFS',
+    payload: res.data.data
     })
     console.log(action.payload);
     console.log(res.data);
@@ -51,7 +51,7 @@ const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
     combineReducers({ 
     addImage,
-    
+    gifs,
     }),
 
     applyMiddleware(sagaMiddleware, logger)

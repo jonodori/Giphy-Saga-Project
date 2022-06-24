@@ -7,13 +7,13 @@ require('dotenv').config();
 
 router.get('/:searchBox', (req, res) => {
     console.log(req.params.searchBox)
-    let tacos = req.params.searchBox
+    
 axios({
     method: "GET",
     url: 'https://api.giphy.com/v1/gifs/search',
     params: {
         api_key: process.env.GIPHY_API_KEY,
-        q: tacos,
+        q: req.params.searchBox,
         limit: 5
     }
 
