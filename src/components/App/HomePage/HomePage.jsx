@@ -1,29 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
-
-
-
-
-
-
-
-
 import { useHistory } from 'react-router-dom'
 
 
-
-
 function HomePage(){
-    const [picture, setPicture] = useState([]);
+
+    const picture = useSelector(store => store.gifs)
     const dispatch = useDispatch();
     const history = useHistory()
     let [search, setSearch] = useState('');
   
-    // useEffect(() => {
-    //     fetchGif();
-    //   },[])
-
-
+ 
     const fetchGif = () => {
         dispatch({
             type: 'FETCH_GIF',
@@ -31,15 +18,11 @@ function HomePage(){
            })   
     }
 
-     
-
     // const getImage = () => {
     //     dispatch({
     //         type: 'ADD_IMAGE'
     //     })
     // }
-
-    
 
 const sendToFavorites = () => {
     history.push('/favorites')
@@ -65,10 +48,17 @@ const saveImageToReduxStore = () => {
                 <section>
                     <h2> Here are your Images!</h2>
                     <div>
-                    
+                        {picture.map((gif) => {
+                            return(
+                            <li key={gif.id}>
+                            <img src={gif.images.original.url}/>
+                            <button onClick={saveImageToReduxStore}>Add to favorites</button>
+                            </li>
+                            )
+                        })}
                         Images go here
                     </div>
-                    <button onClick={saveImageToReduxStore}>Add to favorites</button>
+                   
                 </section>
         </>
     )
