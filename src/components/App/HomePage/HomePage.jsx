@@ -1,22 +1,36 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
+const axios = require('axios');
+import {useState} from 'react';
+
 
 
 function HomePage(){
     const dispatch = useDispatch();
 
-    // useEffect(() => {
-        //where you use your get reducer
+    let [search, setSearch] = useState('');
 
-    // } [],)
+    useEffect(() => {
+       fetchGif
 
+    }, [])
 
-    const getImage = () => {
+    const fetchGif = () => {
         dispatch({
-            type: 'ADD_IMAGE'
-        })
+            type: 'FETCH_GIF',
+            payload: search
+           }) 
+           
     }
+     
 
+    // const getImage = () => {
+    //     dispatch({
+    //         type: 'ADD_IMAGE'
+    //     })
+    // }
+
+    
 
     return(
         <>
@@ -27,8 +41,9 @@ function HomePage(){
                 </div>
             </div> 
                 <div>
-                    <input type='text' placeholder='Enter name'/>
-                    <span><button onClick={getImage}>search</button></span>
+                    <input type='text' placeholder='Enter name' 
+                    onChange={(event) => {setSearch(event.target.value)} }/>
+                    <span><button onClick={fetchGif}>search</button></span>
                 </div>
                 <section>
                     <h2> Here are your Images!</h2>

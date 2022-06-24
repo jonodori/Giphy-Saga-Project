@@ -17,8 +17,28 @@ yield put({
     })
 }
 
+const gifs = (state = [], action) => {
+    return state;
+}
+
+function* fetchGifs(action){
+    console.log('made it to fetchGifs', action)
+const res = yield axios.get('/api/search', action)
+    // console.log(action.payload);
+    // console.log(res.data);
+ yield put({   
+    type: 'FETCH_GIF',
+    payload: res.data
+    })
+    console.log(action.payload);
+    console.log(res.data);
+}
+
+
 function* watcherSaga(){
-yield takeEvery('ADD_IMAGE', addImage)
+// yield takeEvery('ADD_IMAGE', addImage)
+
+yield takeEvery('FETCH_GIF', fetchGifs)
 }
 
 const sagaMiddleware = createSagaMiddleware();
@@ -26,11 +46,13 @@ const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
     combineReducers({ 
     addImage,
+    
     }),
 
     applyMiddleware(sagaMiddleware, logger)
   );
 
+sagaMiddleware.run(watcherSaga);
   
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
