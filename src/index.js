@@ -18,7 +18,12 @@ yield put({
 }
 
 const gifs = (state = [], action) => {
-    return state;
+    switch (action.type) {
+        case 'SET_GIFS': 
+            return action.payload
+        default: 
+        return state
+    }
 }
 
 function* fetchGifs(action){
